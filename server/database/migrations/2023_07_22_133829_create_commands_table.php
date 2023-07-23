@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('productIds');
             $table->string('customerName');
             $table->integer('preparationTime'); // the addition of the preparationTime of all the products
-            $table->boolean('active')->default(false);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
