@@ -1,0 +1,12 @@
+{
+    "navBar": {
+        "title": "resto-name"
+    },
+    "home": {
+        "title": "Make remote work",
+        "description": "Get your team in sync, no matter your location.<br /> Streamline processes,create team rituals, and watch productivity soar."
+    },
+    "footer": {
+        "phoneNumber": "+33752591564"
+    }
+}

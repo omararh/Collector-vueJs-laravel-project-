@@ -1,0 +1,16 @@
+{
+    "navBar": {
+        "title": "resto-name",
+        "home": "ACCEUIL",
+        "menu": "MENU",
+        "contact": "CONTACT"
+    },
+    "home": {
+        "title": "Make remote work",
+        "description": "Get your team in sync, no matter your location. Streamline pr location. Strcation. Streamline pr location. Streamline processes,create team rituals, and watch productivity soar.",
+        "command": "Commander"
+    },
+    "footer": {
+        "phoneNumber": "+33752591564"
+    }
+}
