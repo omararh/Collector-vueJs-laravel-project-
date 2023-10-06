@@ -1,20 +1,26 @@
 <template>
   <NavBar />
   <router-view></router-view>
-  <Footer />
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
-import Footer from '@/components/Footer.vue'
+import httpClient from "@/services/httpClient";
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    Footer,
+  },
+  created() {
+      const token = localStorage.getItem('jwtToken');
+      if (token) {
+        httpClient.axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      }
   }
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

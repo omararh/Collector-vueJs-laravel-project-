@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 
 
 class MenuController extends Controller
@@ -19,8 +18,13 @@ class MenuController extends Controller
     * get the menu
     */
     function get() {
-        if(!file_exists($this->pathToFile)) return response()->json(['error' => 'Menu not found'], 404);
-        return Response::file($this->pathToFile, ['Content-Type' => 'application/json']);
+        if (!file_exists($this->pathToFile)) {
+            return response()->json(['error' => 'Menu not found'], 404);
+        }
+
+        $content = json_decode(file_get_contents($this->pathToFile), true);
+
+        return response()->json($content);
     }
 
     /*

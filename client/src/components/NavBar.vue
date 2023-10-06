@@ -3,18 +3,68 @@
         <router-link to="/" class="title">{{ $t("navBar.title") }}</router-link>
 
         <div class="nav-links">
-            <router-link to="/" class="navButton">{{ $t("navBar.home") }}</router-link>
-            <router-link to="/menu" class="navButton">{{ $t("navBar.menu") }}</router-link>
-            <router-link to="/contact" class="navButton">{{ $t("navBar.contact") }}</router-link>
+            <router-link to="/" v-if="!isAdmin" class="navButton">{{ $t("navBar.home") }}</router-link>
+            <router-link to="/menu" v-if="!isAdmin" class="navButton">{{ $t("navBar.menu") }}</router-link>
+            <router-link to="/basket" v-if="!isAdmin" class="navButton">
+                <span class="cart-icon">
+                    &#x1F6D2;{{ $t("navBar.cart") }}
+                </span>
+            </router-link>
+            <router-link v-if="!isConnected"  to="/logIn" class="navButton"> 
+                <span>
+                    &#x1F464; Connexion
+                </span>
+            </router-link>
+            <template v-else>
+                <router-link v-if="!isAdmin" to="/commands" class="navButton">
+                    Commands
+                </router-link>  
+                <div v-else>
+                    <router-link to="/dashboard" class="navButton">
+                        Gestion-commands
+                    </router-link> 
+                    <router-link to="/dashboard" class="navButton">
+                        Gestion-menu
+                    </router-link>    
+                    <router-link to="/OrdersHistoryPage" class="navButton">
+                        Historique-commands
+                    </router-link>    
+                </div>
+                <button  class="navButton" @click="logOut"> 
+                    <span>
+                        &#x1F464; Deconnexion
+                    </span>
+                </button>
+            </template>
+
         </div>
 
     </nav>
 </template>
   
 <script>
+import basketImg from '@/assets/basket.svg';
+import { UserRepository } from "@/repositories/User";
 
 export default {
     name: 'NavBar',
+    data(){
+        return {
+            basketImg,
+            isConnected : false,
+            isAdmin: false,
+        }
+    },
+    async created(){
+        this.isConnected = await UserRepository.isConnected();
+        this.isAdmin = await UserRepository.isAdmin();
+    },
+    methods : {
+        async logOut() {
+            await UserRepository.logOut();
+            window.location.reload();
+        }
+    },
 };
 </script>
 
@@ -27,6 +77,7 @@ export default {
     padding: 16px;
     box-shadow: 0 2px 4px #ea580c;
     max-height: 15px;
+    margin-bottom: 2em;
 }
 
 .title {
@@ -51,14 +102,19 @@ export default {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    color: #101010;
-    font-family: Didot, serif;
+    color: #000000;
+    font-family: fantasy;
     font-weight: bold;
     transition: color 0.5s;
-    letter-spacing: 1px;
+    background-color: white;
 }
 
 .navButton:hover {
     color: #ea580c;
+}
+
+.cart-icon {
+    transition: transform 0.3s ease;
+    padding: 10px;
 }
 </style>

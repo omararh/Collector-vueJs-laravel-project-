@@ -1,5 +1,4 @@
 <template>
-    <div class="home">
         <div class="content">
             <div class="text-content">
 
@@ -7,7 +6,7 @@
                 <p class="description animated fadeInLeft">{{ $t("home.description") }}</p>
                 <router-link to="/menu" class="button animated fadeInRight">{{ $t("home.command") }}</router-link>
 
-                <div class="food-image-container">
+                <div class="food-image-container animated fadeInLeft">
                     <img :src="foodAvatar" alt="food Image" class="animated fadeInUp food-image" />
                 </div>
             </div>
@@ -16,12 +15,11 @@
                 <img :src="chefAvatar" alt="Chef Avatar" />
             </div>
         </div>
-    </div>
 </template>
 
 <script>
 import chefAvatar from "@/assets/avatar-chef.png";
-import foodAvatar from "@/assets/food.png"
+import foodAvatar from "@/assets/food.png";
 
 export default {
     name: 'HomePage',
@@ -34,13 +32,8 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped >
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
-
-.home {
-    margin-top: 2em;
-    display: flex;
-}
 
 .content {
     display: flex;
@@ -53,14 +46,14 @@ export default {
 }
 
 .title {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: fantasy;
     font-size: 3em;
     color: #34495e;
     animation-delay: 0.1s;
 }
 
 .description {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: fantasy;
     font-size: 1.2em;
     color: #7f8c8d;
     white-space: pre-line;

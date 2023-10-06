@@ -14,7 +14,10 @@ class Command extends Model
         'productIds',
         'time',
         'customerName',
+        'customerPhoneNumber',
         'preparationTime',
+        'specificInstructions',
+        'totalPrice',
         'active'
     ];
 }

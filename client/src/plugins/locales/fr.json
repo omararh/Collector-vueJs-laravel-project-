@@ -3,7 +3,8 @@
         "title": "resto-name",
         "home": "ACCEUIL",
         "menu": "MENU",
-        "contact": "CONTACT"
+        "contact": "CONTACT",
+        "cart": "Panier"
     },
     "home": {
         "title": "Make remote work",
@@ -12,5 +13,10 @@
     },
     "footer": {
         "phoneNumber": "+33752591564"
+    },
+    "itemPage": {
+        "quantity": "Quantité",
+        "Preparation-Time": "Temps de préparation",
+        "addToCart": "Ajouter au panier"
     }
 }

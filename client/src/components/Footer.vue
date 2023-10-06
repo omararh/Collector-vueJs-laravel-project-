@@ -61,9 +61,9 @@ export default {
 
     animation-name: fadeIn;
     animation-duration: 2s;
-    animation-delay: 1.5s;
+    animation-delay: .5s;
     animation-fill-mode: both;
-
+    margin-top: 1em;
 }
 
 .social-icon {
@@ -86,7 +86,7 @@ export default {
     padding: 1em;
     border: none;
     background-color: rgb(255, 255, 255);
-    color: darkred;
+    color: rgb(85, 171, 92);
     text-align: center;
 }
 

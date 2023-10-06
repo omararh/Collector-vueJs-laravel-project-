@@ -1,6 +1,10 @@
 {
     "navBar": {
-        "title": "resto-name"
+        "title": "resto-name",
+        "home": "Home",
+        "menu": "MENU",
+        "contact": "CONTACT",
+        "cart": "Cart"
     },
     "home": {
         "title": "Make remote work",
@@ -8,5 +12,11 @@
     },
     "footer": {
         "phoneNumber": "+33752591564"
+    },
+    "itemPage": {
+        "quantity": "Quantity",
+        "Preparation-Time": "Preparation Time",
+        "addToCart": "Add to cart"
     }
+
 }
