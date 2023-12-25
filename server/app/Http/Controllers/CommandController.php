@@ -9,10 +9,52 @@ use Exception;
 
 class CommandController extends Controller
 {
-    /*
-    * store a new command
-    */
-    public function store(Request $request) {
+    /**
+     * @OA\Post(
+     *     path="/commands/store",
+     *     tags={"command"},
+     *     summary="Store a new command",
+     *     description="Creates a new command and returns it.",
+     *     operationId="storeCommand",
+     *     security={{"bearerAuth":{}}, {"ApiKeyAuth" : {}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Pass command details",
+     *         @OA\JsonContent(
+     *             required={"productIds","customerName","customerPhoneNumber","preparationTime","specificInstructions","totalPrice"},
+     *             @OA\Property(property="productIds", type="string", format="json", example="['prod1', 'prod2']"),
+     *             @OA\Property(property="customerName", type="string", example="John Doe"),
+     *             @OA\Property(property="customerPhoneNumber", type="string", example="1234567890"),
+     *             @OA\Property(property="preparationTime", type="integer", example=30),
+     *             @OA\Property(property="specificInstructions", type="string", example="Leave at the door"),
+     *             @OA\Property(property="totalPrice", type="integer", example=100),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Command created successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Command created successfully!"),
+     *             @OA\Property(property="command", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad request"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="An error message")
+     *         )
+     *     )
+     * )
+     * store a new command
+     */
+    public function store(Request $request): \Illuminate\Http\JsonResponse
+    {
         try {
             // Validate the request data
             $request->validate([
@@ -51,7 +93,8 @@ class CommandController extends Controller
     /*
     * get All the active commands
     */
-    public function getActives() {
+    public function getActives(): \Illuminate\Http\JsonResponse
+    {
         try {
             $activeCommands = Command::where('active', true)->get();
 

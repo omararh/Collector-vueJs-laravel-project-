@@ -43,4 +43,26 @@ class MenuController extends Controller
         return response()->json($articles[$id]);
     }
 
+    /*
+    * Add a product to a menu
+    */
+    // function addProduct(Request $request) {
+    //     try {
+    //         $request->validate([
+    //             'inStock' => 'boolean',
+    //             'category' => 'required|string',
+    //             'name' => 'required|string',
+    //             'description' => 'required|text',
+    //             'price' => 'required|decimal',
+    //             'imageURL' => 'required|decimal',
+    //             'preparationTime' => 'required|integer'
+    //         ]);
+
+    //         $product =
+
+    //     }catch(error){
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
+
 }

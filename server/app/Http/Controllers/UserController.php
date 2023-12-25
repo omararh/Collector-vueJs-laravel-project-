@@ -9,7 +9,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
-
     /*
     * Get the list of the use
     */
@@ -24,7 +23,52 @@ class UserController extends Controller
         }
     }
 
-
+/**
+ * @OA\Post(
+ *   tags={"UserController"},
+ *   path="/logIn",
+ *   summary="Log in a user",
+ *   @OA\RequestBody(
+ *       required=true,
+ *       description="Pass user credentials",
+ *       @OA\JsonContent(
+ *           required={"email","password"},
+ *           @OA\Property(property="email", type="string", format="email", example="user@example.com"),
+ *           @OA\Property(property="password", type="string", format="password", example="password123")
+ *       ),
+ *   ),
+ *   @OA\Response(
+ *       response=200,
+ *       description="Successful login",
+ *       @OA\JsonContent(
+ *           @OA\Property(property="status", type="string", example="success"),
+ *           @OA\Property(property="user", type="object"),
+ *           @OA\Property(
+ *               property="authorisation",
+ *               type="object",
+ *               @OA\Property(property="token", type="string", example="your_jwt_token_here"),
+ *               @OA\Property(property="type", type="string", example="bearer")
+ *           )
+ *       )
+ *   ),
+ *   @OA\Response(
+ *       response=401,
+ *       description="Unauthorized",
+ *       @OA\JsonContent(
+ *           @OA\Property(property="status", type="string", example="error"),
+ *           @OA\Property(property="message", type="string", example="Unauthorized")
+ *       )
+ *   ),
+ *   @OA\Response(
+ *       response=500,
+ *       description="Internal Server Error",
+ *       @OA\JsonContent(
+ *           @OA\Property(property="status", type="string", example="error"),
+ *           @OA\Property(property="message", type="string")
+ *       )
+ *   )
+ * )
+ */
     public function login(Request $request)
     {
         try {

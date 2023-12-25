@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->string('productName');
+            $table->Boolean('inStock')->default(true);
+            $table->string('category');
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('price', 8, 2);
+            $table->string('imageURL');
+            $table->integer('preparationTime');
             $table->timestamps();
         });
     }
